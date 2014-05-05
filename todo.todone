@@ -1,0 +1,29 @@
+
+Circuit Simulator:
+=================
+
+---	Circuit Analysis
+	---	Linear DC
+	--	Linear Transient
+	--	AC
+	--	Nonlinear DC
+
+	Stamper -> ResistenceStamper etc.
+	Analyser -> DcAnalyser, AcAnalyser
+
+---	Numerical Methods
+	+----	LU Factorisation
+		+----	Gaussian Elimination
+		+---	Partial Pivoting
+	--	Newton-Raphson
+
+---	Components
+	----	Wire
+	----	Resistor
+	----	Current Source
+	---	Voltage Source
+	---	Capacitor
+	---	Inductor
+
+----	Debugging support
+	---	Debugging service w/ service locator?
