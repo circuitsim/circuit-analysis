@@ -69,11 +69,21 @@ describe 'Matrix', ->
 			copy._m[0][0] = 16
 			expect(m1._m[0][0]).to.eql(1)
 
-	describe 'set().to() and get()', ->
+	describe 'get()', ->
+		it 'should get the correct entry', ->
+			expect(m1.get(0, 1) ).to.equal(2)
+		it 'should default to column 0', ->
+			expect(m1.get(0) ).to.equal(1)
+
+	describe 'set().to()', ->
 		it 'should set an entry in the matrix', ->
 			m = m1.copy()
-			m.set(0, 0).to(6)
-			expect(m.get(0, 0) ).to.eql(6)
+			m.set(0, 1).to(6)
+			expect(m._m[0][1] ).to.equal(6)
+		it 'should default to column 0', ->
+			m = m1.copy()
+			m.set(1).to(6)
+			expect(m._m[1][0] ).to.equal(6)
 
 	describe 'Multiplication', ->
 		it 'should throw an error if the number of rows/columns don\'t match', ->

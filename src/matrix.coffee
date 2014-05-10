@@ -182,18 +182,17 @@ define ['./utils', './validation/validation'], (utils, {assert} ) =>
 
 			return {l: new Matrix(l), u: new Matrix(u), p: new Matrix(p) }
 
-		setEntry: (entry, r, c) ->
-			if not c?
-				c = 0
-			_m[r][c] = entry
-
-		set: (r, c) ->
+		set: (row, col) ->
+			if not col?
+				col = 0
 			m = @_m
 			to: (value) ->
-				m[r][c] = value
+				m[row][col] = value
 
-		get: (r, c) ->
-			@_m[r][c]
+		get: (row, col) ->
+			if not col?
+				col = 0
+			@_m[row][col]
 
 		# @return (Matrix)
 		copy: () ->
