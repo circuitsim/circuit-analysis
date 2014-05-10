@@ -30,6 +30,7 @@ define ['./utils', './validation/validation'], (utils, {assert} ) =>
 			pb = p.times(b)
 			y = Matrix.createBlankMatrix(size, 1)
 
+			# Use inner arrays for clarity
 			Am = A._m
 			pbm = pb._m
 			Lm = l._m	
@@ -186,13 +187,13 @@ define ['./utils', './validation/validation'], (utils, {assert} ) =>
 				c = 0
 			_m[r][c] = entry
 
+		set: (r, c) ->
+			m = @_m
+			to: (value) ->
+				m[r][c] = value
 
-
-		row: (r) ->
-			_m[r]
-
-		entry: (r, c) ->
-			_m[r][c]
+		get: (r, c) ->
+			@_m[r][c]
 
 		# @return (Matrix)
 		copy: () ->

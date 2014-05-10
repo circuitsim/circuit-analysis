@@ -3,10 +3,10 @@ Circuit Simulator:
 =================
 
 ---	Circuit Analysis
-	---	Linear DC
-	--	Linear Transient
-	--	AC
-	--	Nonlinear DC
+	----	Linear DC
+	---	Nonlinear DC
+	--	Transient
+	-	AC
 
 	Stamper -> ResistenceStamper etc.
 	Analyser -> DcAnalyser, AcAnalyser
@@ -25,5 +25,6 @@ Circuit Simulator:
 	---	Capacitor
 	---	Inductor
 
-----	Debugging support
-	---	Debugging service w/ service locator?
+----	Debugging/logging support
+	---	Debugging/logging service w/ service locator?
+

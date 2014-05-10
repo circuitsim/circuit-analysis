@@ -69,6 +69,12 @@ describe 'Matrix', ->
 			copy._m[0][0] = 16
 			expect(m1._m[0][0]).to.eql(1)
 
+	describe 'set().to() and get()', ->
+		it 'should set an entry in the matrix', ->
+			m = m1.copy()
+			m.set(0, 0).to(6)
+			expect(m.get(0, 0) ).to.eql(6)
+
 	describe 'Multiplication', ->
 		it 'should throw an error if the number of rows/columns don\'t match', ->
 			expect(-> m1.times(emptyMatrix) ).to.throw("Can't multiply a 2,3 matrix by a 0,0 matrix.")
@@ -76,14 +82,14 @@ describe 'Matrix', ->
 			expect(m1.times(m2)._m).to.eql([[ 58, 64]
 										 									[139, 154]])
 		it 'should multiply a 3x3 by a 3x1 matrix to form a non-square matrix', ->
-			threeByThree = new Matrix([[0,0,1]
-																 [0,1,0]
-																 [1,0,0]])
+			threeByThree = new Matrix([[0, 0, 1]
+																 [0, 1, 0]
+																 [1, 0, 0]])
 			threeByOne = new Matrix([[6]
-															 [-4]
+															 [ - 4]
 															 [27]])
 			expect(threeByThree.times(threeByOne)._m).to.eql([[27]
-																												[-4]
+																												[ - 4]
 																												[6]])
 
 	describe 'LU Decomposition', ->
