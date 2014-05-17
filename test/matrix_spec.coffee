@@ -53,6 +53,9 @@ describe 'Matrix', ->
 																												[0, 0]])
 		it 'should return illegal argument exception if size < 0', ->
 			expect(-> Matrix.createBlankMatrix( - 1) ).to.throw("Expected >0. Was: -1")
+		it 'should create a square matrix when given one parameter', ->
+			expect(Matrix.createBlankMatrix(2)._m).to.eql([[0, 0]
+																										 [0, 0]])
 
 	describe 'equals()', ->
 		it 'should return true for equal matrices', ->
