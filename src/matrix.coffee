@@ -65,9 +65,7 @@ define ['./utils', './validation/validation'], (utils, {assert} ) =>
 			m = (((if (j == i) then 1 else 0) for j in [0...size]) for i in [0...size])
 			return new Matrix(m)
 
-		@createBlankMatrix = (numOfRows, numOfCols) ->
-			if not numOfCols?
-				numOfCols = numOfRows
+		@createBlankMatrix = (numOfRows, numOfCols = numOfRows) ->
 			assert(numOfRows).withName('numOfRows').notNegative numOfRows
 			assert(numOfCols).withName('numOfCols').notNegative numOfCols
 			b = ((0 for j in [0...numOfCols]) for i in [0...numOfRows])
@@ -184,16 +182,12 @@ define ['./utils', './validation/validation'], (utils, {assert} ) =>
 
 			return {l: new Matrix(l), u: new Matrix(u), p: new Matrix(p) }
 
-		set: (row, col) ->
-			if not col?
-				col = 0
+		set: (row, col = 0) ->
 			m = @_m
 			to: (value) ->
 				m[row][col] = value
 
-		get: (row, col) ->
-			if not col?
-				col = 0
+		get: (row, col = 0) ->
 			@_m[row][col]
 
 		# @return (Matrix)
