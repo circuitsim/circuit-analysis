@@ -78,15 +78,28 @@ describe 'Matrix', ->
 		it 'should default to column 0', ->
 			expect(m1.get(0) ).to.equal(1)
 
-	describe 'set().to()', ->
-		it 'should set an entry in the matrix', ->
+	describe 'set', ->
+		describe 'set().to()', ->
+			it 'should set an entry in the matrix', ->
+				m = m1.copy()
+				m.set(0, 1).to(6)
+				expect(m._m[0][1] ).to.equal(6)
+			it 'should default to column 0', ->
+				m = m1.copy()
+				m.set(1).to(6)
+				expect(m._m[1][0] ).to.equal(6)
+
+		describe 'set().plusEquals()', ->
+			it 'should be equivalent to +=', ->
+				m = m1.copy()
+				m.set(0, 1).plusEquals(4)
+				expect(m._m[0][1] ).to.equal(6)
+
+	describe 'increment()', ->
+		it 'should increment by 1', ->
 			m = m1.copy()
-			m.set(0, 1).to(6)
-			expect(m._m[0][1] ).to.equal(6)
-		it 'should default to column 0', ->
-			m = m1.copy()
-			m.set(1).to(6)
-			expect(m._m[1][0] ).to.equal(6)
+			m.increment(0, 1)
+			expect(m._m[0][1] ).to.equal(3)
 
 	describe 'Multiplication', ->
 		it 'should throw an error if the number of rows/columns don\'t match', ->

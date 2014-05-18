@@ -184,8 +184,15 @@ define ['./utils', './validation/validation'], (utils, {assert} ) =>
 
 		set: (row, col = 0) ->
 			m = @_m
-			to: (value) ->
-				m[row][col] = value
+			{
+				to: (value) ->
+					m[row][col] = value
+				plusEquals: (value) ->
+					m[row][col] += value
+			}
+
+		increment: (row, col = 0) ->
+			@_m[row][col]++
 
 		get: (row, col = 0) ->
 			@_m[row][col]
