@@ -46,6 +46,13 @@ define [], () ->
 				if value >= number
 					throw createValidationException("Expected #{inlineName()}to be <#{number}. Was: #{value}")
 
+			@greaterThanOrEqualTo = (number) =>
+				@isNumber value
+				@isNumber number
+				if value < number
+					throw createValidationException("Expected #{inlineName()}to be >=#{number}. Was: #{value}")
+
+
 	return {
 		assert: valueHolder
 	}

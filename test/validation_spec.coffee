@@ -37,3 +37,12 @@ describe 'Validation', ->
 				expect(-> assert(1).lessThan(1)).to.throw("Expected to be <1. Was: 1")
 			it 'should throw an exception when >', ->
 				expect(-> assert(2).lessThan(1)).to.throw("Expected to be <1. Was: 2")
+
+		describe 'greaterThanOrEqualTo', ->
+			it 'should not throw an exception when >', ->
+				expect(-> assert(2).greaterThanOrEqualTo(1)).to.not.throw
+			it 'should not throw an exception when equal', ->
+				expect(-> assert(1).greaterThanOrEqualTo(1)).to.not.throw
+			it 'should throw an exception when <', ->
+				expect(-> assert(1).greaterThanOrEqualTo(2)).to.throw("Expected to be >=2. Was: 1")
+
