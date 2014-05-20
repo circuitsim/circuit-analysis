@@ -145,6 +145,8 @@ describe 'Matrix', ->
 				try
 					singularMatrix.decompose()
 				catch error
+					expect(error).to.have.ownProperty 'cause'
+					expect(error.cause).to.eql singularMatrix
 
 	describe 'Equation solver', ->
 		it 'should solve a matrix equation of the form Ax=b for x', ->
