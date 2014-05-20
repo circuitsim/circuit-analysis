@@ -68,6 +68,8 @@ define ['./utils', './validation/validation'], (utils, {assert} ) =>
 		@createBlankMatrix = (numOfRows, numOfCols = numOfRows) ->
 			assert(numOfRows).withName('numOfRows').notNegative numOfRows
 			assert(numOfCols).withName('numOfCols').notNegative numOfCols
+			if numOfRows is 0 or numOfCols is 0
+				return new Matrix()
 			b = ((0 for j in [0...numOfCols]) for i in [0...numOfRows])
 			return new Matrix(b)
 
