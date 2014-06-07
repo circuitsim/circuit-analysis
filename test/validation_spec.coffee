@@ -38,11 +38,53 @@ describe 'Validation', ->
 			it 'should throw an exception when >', ->
 				expect(-> assert(2).lessThan(1)).to.throw("Expected to be <1. Was: 2")
 
+		describe 'greaterThan', ->
+			it 'should not throw an exception when >', ->
+				expect(-> assert(2).greaterThan(1)).to.not.throw()
+			it 'should throw an exception when equal', ->
+				expect(-> assert(1).greaterThan(1)).to.throw("Expected to be >1. Was: 1")
+			it 'should throw an exception when <', ->
+				expect(-> assert(1).greaterThan(2)).to.throw("Expected to be >2. Was: 1")
+
+		describe 'lessThanOrEqualTo', ->
+			it 'should not throw an exception when >', ->
+				expect(-> assert(1).lessThanOrEqualTo(2)).to.not.throw()
+			it 'should not throw an exception when equal', ->
+				expect(-> assert(1).lessThanOrEqualTo(1)).to.not.throw()
+			it 'should throw an exception when <', ->
+				expect(-> assert(2).lessThanOrEqualTo(1)).to.throw("Expected to be <=1. Was: 2")
+
 		describe 'greaterThanOrEqualTo', ->
 			it 'should not throw an exception when >', ->
-				expect(-> assert(2).greaterThanOrEqualTo(1)).to.not.throw
+				expect(-> assert(2).greaterThanOrEqualTo(1)).to.not.throw()
 			it 'should not throw an exception when equal', ->
-				expect(-> assert(1).greaterThanOrEqualTo(1)).to.not.throw
+				expect(-> assert(1).greaterThanOrEqualTo(1)).to.not.throw()
 			it 'should throw an exception when <', ->
 				expect(-> assert(1).greaterThanOrEqualTo(2)).to.throw("Expected to be >=2. Was: 1")
 
+		describe 'isBetween', ->
+			describe 'inclusive', ->
+				it 'should not throw an error if within range', ->
+					expect( -> assert(5).isBetween(1).and(10).inclusive() ).to.not.throw()
+
+				it 'should throw an error if out of range', ->
+					expect( -> assert(20).isBetween(1).and(10).inclusive() ).to.throw('ValidationException')
+
+				it 'should not throw an error if on lower boundary', ->
+					expect( -> assert(1).isBetween(1).and(10).inclusive() ).to.not.throw()
+
+				it 'should not throw an error if on upper boundary', ->
+					expect( -> assert(10).isBetween(1).and(10).inclusive() ).to.not.throw()
+
+			describe 'exclusive', ->
+				it 'should not throw an error if within range', ->
+					expect( -> assert(5).isBetween(1).and(10).exclusive() ).to.not.throw()
+
+				it 'should throw an error if out of range', ->
+					expect( -> assert(20).isBetween(1).and(10).exclusive() ).to.throw('ValidationException')
+
+				it 'should throw an error if on lower boundary', ->
+					expect( -> assert(1).isBetween(1).and(10).exclusive() ).to.throw('ValidationException')
+
+				it 'should throw an error if on upper boundary', ->
+					expect( -> assert(10).isBetween(1).and(10).exclusive() ).to.throw('ValidationException')
