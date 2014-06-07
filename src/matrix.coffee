@@ -33,7 +33,7 @@ define ['./utils', './validation/validation'], (utils, {assert} ) =>
 			# Use inner arrays for clarity
 			Am = A._m
 			pbm = pb._m
-			Lm = l._m	
+			Lm = l._m
 			Um = u._m
 			ym = y._m
 
@@ -48,9 +48,9 @@ define ['./utils', './validation/validation'], (utils, {assert} ) =>
 			xm = x._m
 
 			# Solve Ux = y using backward substitution
-			for rowIndex in [size-1..0]
+			for rowIndex in [size - 1..0]
 				xm[rowIndex][0] = ym[rowIndex][0]
-				for colIndex in [rowIndex+1...size]
+				for colIndex in [rowIndex + 1...size]
 					xm[rowIndex][0] -= Um[rowIndex][colIndex] * xm[colIndex][0]
 				xm[rowIndex][0] /= Um[rowIndex][rowIndex]
 
@@ -104,11 +104,11 @@ define ['./utils', './validation/validation'], (utils, {assert} ) =>
 			n = m2._m
 
 			# initialise result
-			r = ((0 for [0...m2.getNumOfColumns()]) for [0...@getNumOfRows()  ])
+			r = ((0 for [0...m2.getNumOfColumns() ]) for [0...@getNumOfRows() ])
 
-			for i in [0...@getNumOfRows()	]
-				for j in [0...m2.getNumOfColumns()]
-					for k in [0...@getNumOfColumns()]
+			for i in [0...@getNumOfRows() ]
+				for j in [0...m2.getNumOfColumns() ]
+					for k in [0...@getNumOfColumns() ]
 						r[i][j] += @_m[i][k] * n[k][j]
 			return new Matrix(r)
 

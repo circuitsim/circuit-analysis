@@ -2,14 +2,13 @@
 Circuit Simulator:
 =================
 
----	Circuit Analysis
+----	Circuit Analysis
 	----	Linear DC
 	---	Nonlinear DC
 	--	Transient
 	-	AC
 
-	Stamper -> ResistenceStamper etc.
-	Analyser -> DcAnalyser, AcAnalyser
+--	UI
 
 ---	Numerical Methods
 	+----	LU Factorisation
@@ -17,7 +16,7 @@ Circuit Simulator:
 		+---	Partial Pivoting
 	--	Newton-Raphson
 
----	Components
+--	Components
 	----	Wire
 	----	Resistor
 	----	Current Source
@@ -28,3 +27,4 @@ Circuit Simulator:
 ----	Debugging/logging support
 	---	Debugging/logging service w/ service locator?
 
+---	Rewrite Matrix tests to avoid using internal implementation
