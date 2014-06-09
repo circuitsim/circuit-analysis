@@ -85,9 +85,9 @@ describe 'Equation Builder:', ->
 			it 'should stamp into the augmented part of the nodal admittance matrix', ->
 				{stamp, getEquation} = createEquationBuilder { numOfNodes: 3, numOfVSources: 1}
 				stamp(5).volts.from(1).to(2)
-				expect(getEquation().nodalAdmittances).to.eql new Matrix([[0, 0, 1]
-																					 												[0, 0, - 1]
-																					 												[1, - 1, 0]])
+				expect(getEquation().nodalAdmittances).to.eql new Matrix([[0, 0, - 1]
+																					 												[0, 0, 1]
+																					 												[ - 1, 1, 0]])
 
 			it 'should not stamp more than the specified number of voltage sources', ->
 				{stamp} = createEquationBuilder { numOfNodes: 3, numOfVSources: 1}

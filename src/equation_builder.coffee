@@ -58,10 +58,10 @@ define ['./matrix', './validation/validation'], (Matrix, {assert} ) ->
 			assert(numOfVoltageSourcesStamped).withName('number of voltage sources already stamped')
 				.lessThan(numOfVSources)
 			vIndex = numOfNodes + numOfVoltageSourcesStamped
-			stampNodalAdmittanceMatrix vIndex, fromNode, 1
-			stampNodalAdmittanceMatrix vIndex, toNode, - 1
-			stampNodalAdmittanceMatrix fromNode, vIndex, 1
-			stampNodalAdmittanceMatrix toNode, vIndex, - 1
+			stampNodalAdmittanceMatrix vIndex, fromNode, - 1
+			stampNodalAdmittanceMatrix vIndex, toNode, 1
+			stampNodalAdmittanceMatrix fromNode, vIndex, - 1
+			stampNodalAdmittanceMatrix toNode, vIndex, 1
 			stampInputVector vIndex, voltage
 			numOfVoltageSourcesStamped++
 
