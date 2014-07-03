@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ThomWright/circuitsimulator.svg?branch=master)](https://travis-ci.org/ThomWright/circuitsimulator)
+
 Electronic Circuit Simulator
 ============================
 
