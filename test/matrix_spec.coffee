@@ -43,19 +43,21 @@ describe 'Matrix', ->
 																 												[0, 1, 0]
 																 												[0, 0, 1]])
 		it 'should create an empty identity matrix', ->
-			expect(Matrix.createIdentityMatrix(0)).to.eql new Matrix()
+			expect(Matrix.createIdentityMatrix(0) ).to.eql new Matrix()
 		it 'should return illegal argument exception if size < 0', ->
-			expect(-> Matrix.createIdentityMatrix( - 1) ).to.throw("Expected 'size' to be >0. Was: -1")
+			expect(-> Matrix.createIdentityMatrix( - 1) ).to.throw /.*Matrix size.*/
 
 	describe 'createBlankMatrix()', ->
 		it 'should create an empty matrix when given zero size', ->
-			expect(Matrix.createBlankMatrix(0)).to.eql new Matrix()
+			expect(Matrix.createBlankMatrix(0) ).to.eql new Matrix()
 
 		it 'should create a 2x2 matrix of all zeros', ->
 			expect(Matrix.createBlankMatrix(2, 2)._m).to.eql([[0, 0]
 																												[0, 0]])
 		it 'should return illegal argument exception if size < 0', ->
-			expect(-> Matrix.createBlankMatrix( - 1) ).to.throw("Expected 'numOfRows' to be >0. Was: -1")
+			expect(-> Matrix.createBlankMatrix( - 1) ).to.throw /.*Number of rows.*/
+		it 'should return illegal argument exception if size < 0', ->
+			expect(-> Matrix.createBlankMatrix(1, - 1) ).to.throw /.*Number of columns.*/
 		it 'should create a square matrix when given one parameter', ->
 			expect(Matrix.createBlankMatrix(2)._m).to.eql([[0, 0]
 																										 [0, 0]])

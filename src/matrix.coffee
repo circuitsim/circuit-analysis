@@ -1,7 +1,7 @@
 if typeof define isnt 'function'
 	define = (require('amdefine') ) (module)
 
-define ['./utils', './validation/validation'], (utils, {assert} ) =>
+define ['./utils', 'chai'], (utils, {expect} ) =>
 
 	# @param ([[number]]) m
 	# @return ([[number]])
@@ -59,15 +59,15 @@ define ['./utils', './validation/validation'], (utils, {assert} ) =>
 		# @param (int) size
 		# @return (Matrix) The identity matrix of given size.
 		@createIdentityMatrix = (size) ->
-			assert(size).withName('size').notNegative size
+			expect(size, 'Matrix size').to.be.at.least 0
 			if size is 0
 				return new Matrix()
 			m = (((if (j == i) then 1 else 0) for j in [0...size]) for i in [0...size])
 			return new Matrix(m)
 
 		@createBlankMatrix = (numOfRows, numOfCols = numOfRows) ->
-			assert(numOfRows).withName('numOfRows').notNegative numOfRows
-			assert(numOfCols).withName('numOfCols').notNegative numOfCols
+			expect(numOfRows, 'Number of rows').to.be.at.least 0
+			expect(numOfCols, 'Number of columns').to.be.at.least 0
 			if numOfRows is 0 or numOfCols is 0
 				return new Matrix()
 			b = ((0 for j in [0...numOfCols]) for i in [0...numOfRows])
@@ -86,8 +86,8 @@ define ['./utils', './validation/validation'], (utils, {assert} ) =>
 		constructor: (array) ->
 			# TODO assert that all rows are arrays of equal length
 			if array?
-				assert(array).withName('Matrix constructor array').isArray()
-				assert(array[0]).withName('Matrix constructor inner array').isArray()
+				expect(array, 'Matrix constructor array').to.be.an.instanceof Array
+				expect(array[0], 'Matrix constructor array').to.be.an.instanceof Array
 				@_m = array
 
 		# Multiply this matrix with another matrix.

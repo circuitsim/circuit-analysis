@@ -1,9 +1,13 @@
 if typeof define isnt 'function'
 	define = (require('amdefine') ) (module)
 
-define ['./matrix', './validation/validation'], (Matrix, {assert} ) ->
+define ['./matrix', 'chai'], (Matrix, {expect} ) ->
 
 	MIN_NUM_OF_NODES = 2
+
+	# TODO move this into a Utils module?
+	plural = (number) ->
+		if -2 < number < 2 then '' else 's'
 
 	createBlankEquation = (size) ->
 		nodalAdmittances: Matrix.createBlankMatrix(size)
@@ -17,8 +21,8 @@ define ['./matrix', './validation/validation'], (Matrix, {assert} ) ->
 	###
 	createEquationBuilder: ({numOfNodes, numOfVSources} ) ->
 		numOfVSources ?= 0
-		assert(numOfNodes).withName('numOfNodes').greaterThanOrEqualTo MIN_NUM_OF_NODES
-		assert(numOfVSources).withName('numOfVSources').notNegative()
+		expect(numOfNodes, 'Number of nodes').to.be.at.least MIN_NUM_OF_NODES
+		expect(numOfVSources, 'Number of voltage sources').to.be.at.least 0
 
 		# modified nodal analysis  (MNA)
 		size = numOfNodes + numOfVSources - 1 # ignore ground node
@@ -43,20 +47,19 @@ define ['./matrix', './validation/validation'], (Matrix, {assert} ) ->
 				inputs.set(row).plusEquals x
 
 		stampConductance = (conductance) -> (node1, node2) ->
-			assert(conductance).withName('conductance').notNegative()
+			expect(conductance, 'conductance').to.be.at.least 0
 			stampNodalAdmittanceMatrix node1, node1, conductance
 			stampNodalAdmittanceMatrix node2, node2, conductance
 			stampNodalAdmittanceMatrix node1, node2, - conductance
 			stampNodalAdmittanceMatrix node2, node1, - conductance
 
 		stampResistance = (resistance) -> (node1, node2) ->
-			if resistance is 0 then resistance = 1
+			expect(resistance, 'resistance').to.not.equal 0
 			conductance = 1 / resistance
 			stampConductance(conductance) node1, node2
 
 		stampVoltageSource = (voltage) -> (fromNode, toNode) ->
-			assert(numOfVoltageSourcesStamped).withName('number of voltage sources already stamped')
-				.lessThan(numOfVSources)
+			expect(numOfVoltageSourcesStamped, 'Number of voltage sources stamped').to.be.lessThan numOfVSources
 			vIndex = numOfNodes + numOfVoltageSourcesStamped
 			numOfVoltageSourcesStamped++
 			stampNodalAdmittanceMatrix vIndex, fromNode, - 1
@@ -101,8 +104,8 @@ define ['./matrix', './validation/validation'], (Matrix, {assert} ) ->
 				validateNodes(functionUsingNodes) fromNode, toNode
 
 		validateNodes = (stampFunction) -> (fromNode, toNode) ->
-			assert(fromNode).withName('fromNode').isBetween(0).and(numOfNodes - 1).inclusive()
-			assert(toNode).withName('toNode').isBetween(0).and(numOfNodes - 1).inclusive()
+			expect(fromNode, 'from node').to.be.at.least(0).and.lessThan numOfNodes
+			expect(toNode, 'to node').to.be.at.least(0).and.lessThan numOfNodes
 			stampFunction fromNode, toNode
 
 		stampGain = (gain) ->
