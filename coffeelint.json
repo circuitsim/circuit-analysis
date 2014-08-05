@@ -4,17 +4,17 @@
     },
     "arrow_spacing": {
         "name": "arrow_spacing",
-        "level": "ignore"
+        "level": "warn"
     },
     "no_tabs": {
         "name": "no_tabs",
-        "level": "ignore"
+        "level": "warn"
     },
     "no_trailing_whitespace": {
         "name": "no_trailing_whitespace",
         "level": "error",
         "allowed_in_comments": false,
-        "allowed_in_empty_lines": true
+        "allowed_in_empty_lines": false
     },
     "max_line_length": {
         "name": "max_line_length",
@@ -33,7 +33,7 @@
     },
     "indentation": {
         "name": "indentation",
-        "value": 1,
+        "value": 2,
         "level": "error"
     },
     "camel_case_classes": {
@@ -72,7 +72,7 @@
     },
     "no_empty_param_list": {
         "name": "no_empty_param_list",
-        "level": "ignore"
+        "level": "warn"
     },
     "no_stand_alone_at": {
         "name": "no_stand_alone_at",
@@ -80,7 +80,7 @@
     },
     "space_operators": {
         "name": "space_operators",
-        "level": "ignore"
+        "level": "warn"
     },
     "duplicate_key": {
         "name": "duplicate_key",
