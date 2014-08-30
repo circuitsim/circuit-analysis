@@ -3,6 +3,8 @@ npm-debug.log
 
 src/*
 test/*
+temp/*
 .travis.yml
+.gitignore
 *.sublime-*
-coffeeline.json
+coffeelint.json

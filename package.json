@@ -2,12 +2,8 @@
   "name"            : "circuit-analysis",
   "version"         : "0.0.1",
   "description"     : "Attempt at a circuit simulator.",
-  "author"          : "Tom Wright",
+  "author"          : "Thom Wright",
   "main"            : "lib/index.js",
-  "repository"      : {
-    "type"          : "git",
-    "url"           : "https://github.com/ThomWright/circuitsimulator"
-  },
   "dependencies"    : {
     "matrixy"       : ">=0.0.1",
     "amdefine"      : ">=0.1",
@@ -18,12 +14,29 @@
     "chai"          : "~1.9",
     "chai-stats"    : "~0.3",
     "coffee-script" : "~1.7",
-    "coffeelint"    : "~1.3"
+    "coffeelint"    : "~1.3",
+    "jsdoc"         : "~3"
   },
   "scripts"         : {
-    "prepublish"    : "cake build",
+    "prepublish"    : "cake build && cake doc",
     "pretest"       : "coffeelint src/*",
     "test"          : "cake test"
   },
-  "license"         : "MIT"
+  "license"         : "MIT",
+  "repository"      : {
+    "type"          : "git",
+    "url"           : "http://github.com/ThomWright/circuitsimulator"
+  },
+  "bugs"            : {
+    "url"           : "http://github.com/ThomWright/circuitsimulator/issues"
+  },
+  "homepage"        : "http://github.com/ThomWright/circuitsimulator",
+  "keywords"        : [
+    "cirsim",
+    "electronic",
+    "electronics",
+    "circuit",
+    "simulator",
+    "simulation"
+  ]
 }

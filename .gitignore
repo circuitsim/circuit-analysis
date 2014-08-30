@@ -29,3 +29,7 @@ node_modules
 
 # Built coffeescript
 lib/
+
+# Built docs
+doc/
+docs/

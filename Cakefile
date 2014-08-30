@@ -12,13 +12,20 @@ launch = (cmd, options = [], callback) ->
 build = ({watch, callback} = {}) ->
   watch ?= false
   options = [
-    '-c'
-    '-b'
+    '--compile'
+    '--bare' # Compile the JavaScript without the top-level function safety wrapper
     '--output', 'lib'
     'src'
     ]
   options.unshift '-w' if watch
   launch 'coffee', options, callback
+
+doc = ->
+  options = [
+    './lib/'
+    '-d', './docs'
+  ]
+  launch './node_modules/.bin/jsdoc', options
 
 mocha = (options, callback) ->
   options ?= [
@@ -32,6 +39,8 @@ mocha = (options, callback) ->
   launch './node_modules/.bin/mocha', options, callback
 
 task 'build', 'compile source', -> build()
+
+task 'doc', 'create documentation', -> doc()
 
 task 'watch', 'compile and watch', -> build watch: true
 
