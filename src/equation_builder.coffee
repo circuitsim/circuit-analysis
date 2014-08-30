@@ -1,7 +1,8 @@
 if typeof define isnt 'function'
   define = (require('amdefine') ) (module)
 
-define ['./matrix', 'chai'], (Matrix, {expect} ) ->
+define ['matrixy', 'chai'], ({Matrixy}, {expect} ) ->
+  {createBlankMatrix, set} = Matrixy
 
   MIN_NUM_OF_NODES = 2
 
@@ -10,8 +11,8 @@ define ['./matrix', 'chai'], (Matrix, {expect} ) ->
     if -2 < number < 2 then '' else 's'
 
   createBlankEquation = (size) ->
-    nodalAdmittances: Matrix.createBlankMatrix(size)
-    inputs: Matrix.createBlankMatrix(size, 1)
+    nodalAdmittances: createBlankMatrix(size)
+    inputs: createBlankMatrix(size, 1)
 
   ###
    * Creates a blank equation which can be built up using 'stamps' for each element in the circuit.
@@ -37,14 +38,14 @@ define ['./matrix', 'chai'], (Matrix, {expect} ) ->
       if row isnt 0 and col isnt 0 # ignore ground node
         row--
         col--
-        nodalAdmittances.set(row, col).plusEquals x
+        nodalAdmittances set(row, col).plusEquals x
 
     # Stamp value x on the right side of 'row', representing an independent current source
     # flowing into node 'row'.
     stampInputVector = (row, x) ->
       if row isnt 0
         row--
-        inputs.set(row).plusEquals x
+        inputs set(row, 0).plusEquals x
 
     stampConductance = (conductance) -> (node1, node2) ->
       expect(conductance, 'conductance').to.be.at.least 0
