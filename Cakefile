@@ -1,6 +1,7 @@
 # Cakefile
 
-{spawn} = require "child_process"
+{spawn} = require 'child_process'
+rimraf = require 'rimraf'
 
 launch = (cmd, options = [], callback) ->
   app = spawn cmd, options
@@ -10,15 +11,16 @@ launch = (cmd, options = [], callback) ->
     callback?() if status is 0
 
 build = ({watch, callback} = {}) ->
-  watch ?= false
-  options = [
-    '--compile'
-    '--bare' # Compile the JavaScript without the top-level function safety wrapper
-    '--output', 'lib'
-    'src'
-    ]
-  options.unshift '-w' if watch
-  launch 'coffee', options, callback
+  rimraf './lib', ->
+    watch ?= false
+    options = [
+      '--compile'
+      '--bare' # Compile the JavaScript without the top-level function safety wrapper
+      '--output', 'lib'
+      'src'
+      ]
+    options.unshift '-w' if watch
+    launch 'coffee', options, callback
 
 doc = ->
   options = [
