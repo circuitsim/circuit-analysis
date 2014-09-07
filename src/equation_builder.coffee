@@ -1,3 +1,9 @@
+###*
+ * Create an equation to describe a circuit.
+ * @module equation_builder
+ * @requires matrixy
+ * @requires chai
+###
 {Matrixy} = require 'matrixy'
 {expect} = require 'chai'
 
@@ -13,11 +19,51 @@ createBlankEquation = (size) ->
   nodalAdmittances: createBlankMatrix(size)
   inputs: createBlankMatrix(size, 1)
 
+###*
+ * A matrix Object.
+ * @external Matrix
+ * @see  {@link https://github.com/ThomWright/matrixy}
 ###
+
+###*
+ * @typedef {Object} module:equation_builder.equation
+ * @property {external:Matrix} nodalAdmittances
+ * @property {external:Matrix} inputs
+###
+
+###*
+ * @typedef {Object} module:equation_builder.builder
+ * @property {module:equation_builder.stamp} stamp
+ * @property {module:equation_builder.getEquation} getEquation
+###
+
+###*
+ * @callback module:equation_builder.getEquation
+ * @return {module:equation_builder.equation}
+###
+
+###*
+ * Stamp an element into the circuit equation.
+ * @example
+ * # Stamp a 5 ohm resistor between nodes 1 and 2
+ * stamp(5).ohms.between(1, 2)
+ * @example
+ * # Stamp 5 volts from node 1 to node 2
+ * stamp(5).volts.from(1).to(2)
+ * @example
+ * # Stamp a Voltage-Controlled-Current-Source (VCCS)
+ * stamp.a.gain.of(10).multiplying.a.voltage.from(1).to(2)
+     .controlling.a.currentSource.from(2).to(3)
+ * @callback module:equation_builder.stamp
+ * @param {Number} value - Value to stamp.
+ * @return {Object} Choice of units to stamp.
+###
+
+###*
  * Creates a blank equation which can be built up using 'stamps' for each element in the circuit.
- * @param {int} numOfNodes
- * @param {int} numOfVSources = 0
- * @return {object}
+ * @param {Integer} numOfNodes
+ * @param {Integer} [numOfVSources = 0]
+ * @return {module:equation_builder.builder}
 ###
 module.exports.createEquationBuilder = ({numOfNodes, numOfVSources} ) ->
   numOfVSources ?= 0
@@ -125,31 +171,42 @@ module.exports.createEquationBuilder = ({numOfNodes, numOfVSources} ) ->
         current: directional extendApi CC
         voltage: directional extendApi VC
 
-  ###
-   * Stamp an element into the circuit equation.
-   * @param {number} value Value to stamp.
-   * @return {object} Choice of units to stamp.
-  ###
   stamp = (value) ->
     ohms: nonDirectional stampResistance(value)
     siemens: nonDirectional stampConductance(value)
     volts: directional stampVoltageSource(value)
     amps: directional stampCurrentSource(value)
 
+  ###*
+   * @namespace module:equation_builder~stamp
   ###
-   * Stamp a controlled source into the circuit equation.
-   * @param {number} gain
-   * @return {object}
+
+  ###*
+   * API for stamping a controlled source.
+   * @example
+   * # Stamp a Voltage-Controlled-Current-Source (VCCS)
+   * stamp.a.gain.of(10).multiplying.a.voltage.from(1).to(2)
+       .controlling.a.currentSource.from(2).to(3)
+   * @memberof module:equation_builder~stamp
+   * @namespace module:equation_builder~stamp.a
+   * @property {module:equation_builder~stamp.a.gain} gain
   ###
   stamp.a =
+    ###*
+     * @memberof module:equation_builder~stamp.a
+     * @namespace module:equation_builder~stamp.a.gain
+     * @property {module:equation_builder~stamp.a.gain.of} of
+    ###
     gain:
+      ###*
+       * Stamp the gain for a controlled source.
+       * @function module:equation_builder~stamp.a.gain.of
+       * @param {Number} gain
+       * @return todo
+      ###
       of: stampGain
-
-  ###
-  @EXTERNAL
-  ###
 
   stamp: stamp
   getEquation: ->
-    nodalAdmittances: nodalAdmittances,
+    nodalAdmittances: nodalAdmittances
     inputs: inputs
