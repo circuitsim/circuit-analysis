@@ -17,3 +17,5 @@ An electronic circuit simulator inspired by [Paul Falstad](http://falstad.com)'s
 - Transient analysis
 - AC analysis
 - Browser-based GUI
+
+[API Docs are in the wiki](https://github.com/ThomWright/circuitsimulator/wiki)
