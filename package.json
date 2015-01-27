@@ -6,15 +6,14 @@
   "main": "lib/index.js",
   "dependencies": {
     "matrixy": "^0.0.2",
-    "chai": "~1.9"
+    "chai": "~1.10"
   },
   "devDependencies": {
-    "chai": "~1.9",
     "chai-stats": "~0.3",
-    "coffee-script": "~1.7",
-    "coffeelint": "~1.3",
+    "coffee-script": "~1.8",
+    "coffeelint": "~1.8",
     "jsdoc": "~3",
-    "mocha": "~1.17",
+    "mocha": "~2",
     "rimraf": "^2.2.8"
   },
   "scripts": {
