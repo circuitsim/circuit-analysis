@@ -33,3 +33,6 @@ lib/
 # Built docs
 doc/
 docs/
+
+# Vagrant stuff
+.vagrant/
