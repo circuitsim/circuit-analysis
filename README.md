@@ -18,4 +18,4 @@ An electronic circuit simulator inspired by [Paul Falstad](http://falstad.com)'s
 - AC analysis
 - Browser-based GUI
 
-[API Docs are in the wiki](https://github.com/circuitsim/circuitsimulator/wiki)
+[API Docs are in the wiki](https://github.com/circuitsim/circuit-analysis/wiki)
