@@ -1,6 +1,6 @@
 {
   "name": "circuit-analysis",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Attempt at a circuit simulator.",
   "author": "Thom Wright",
   "main": "lib/index.js",
