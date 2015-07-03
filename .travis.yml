@@ -1,4 +1,12 @@
 language: node_js
 node_js:
-  - "0.11"
-  - "0.10"
+- '0.11'
+- '0.10'
+deploy:
+  provider: npm
+  email: npm@thomwright.co.uk
+  api_key:
+    secure: QkXTac7PqE3/MCeh5ohWKXkYwOPeLBpCsCDN1+cEfcJmHe4VFfRb441KSD/wW+3WPSY+PSfMSv3BbJYUj+XunQcfYcd6qsz3dN9C9W2a6L4s3Qj1mcep32lhrAwgHGJOC7Km3n6HB/qJ61NcenXhEwxVCOoyaophqi1CduDeBR8=
+  on:
+    tags: true
+    repo: circuitsim/circuit-analysis
