@@ -1,8 +1,9 @@
 Electronic Circuit Simulator
 ============================
-[![Build Status](https://travis-ci.org/ThomWright/circuit-analysis.svg?branch=master)](https://travis-ci.org/ThomWright/circuit-analysis)
-[![Dependency Status](https://david-dm.org/ThomWright/circuit-analysis.svg?theme=shields.io)](https://david-dm.org/ThomWright/circuit-analysis)
-[![devDependency Status](https://david-dm.org/ThomWright/circuit-analysis/dev-status.svg?theme=shields.io)](https://david-dm.org/ThomWright/circuit-analysis#info=devDependencies)
+[![Travis](https://img.shields.io/travis/circuitsim/circuit-analysis.svg?style=flat-square)](https://travis-ci.org/circuitsim/circuit-analysis)
+[![npm](https://img.shields.io/npm/v/circuit-analysis.svg?style=flat-square)](https://www.npmjs.com/package/circuit-analysis)
+[![David](https://img.shields.io/david/circuitsim/circuit-analysis.svg?style=flat-square)](https://david-dm.org/circuitsim/circuit-analysis)
+[![David](https://img.shields.io/david/dev/circuitsim/circuit-analysis.svg?style=flat-square)](https://david-dm.org/circuitsim/circuit-analysis#info=devDependencies)
 
 An electronic circuit simulator inspired by [Paul Falstad](http://falstad.com)'s excellent [circuit simulator](http://www.falstad.com/circuit/).
 
@@ -12,7 +13,7 @@ An electronic circuit simulator inspired by [Paul Falstad](http://falstad.com)'s
 ### Current Progress
 - Numerical solutions for linear, time-invariant circuits
 
-### Future Ambitions 
+### Future Ambitions
 - Non-linear circuits
 - Transient analysis
 - AC analysis
