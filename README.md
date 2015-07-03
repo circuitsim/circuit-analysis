@@ -1,5 +1,5 @@
-Electronic Circuit Simulator
-============================
+Circuit Analysis
+================
 [![Travis](https://img.shields.io/travis/circuitsim/circuit-analysis.svg?style=flat-square)](https://travis-ci.org/circuitsim/circuit-analysis)
 [![npm](https://img.shields.io/npm/v/circuit-analysis.svg?style=flat-square)](https://www.npmjs.com/package/circuit-analysis)
 [![David](https://img.shields.io/david/circuitsim/circuit-analysis.svg?style=flat-square)](https://david-dm.org/circuitsim/circuit-analysis)
@@ -19,4 +19,4 @@ An electronic circuit simulator inspired by [Paul Falstad](http://falstad.com)'s
 - AC analysis
 - Browser-based GUI
 
-[API Docs are in the wiki](https://github.com/ThomWright/circuitsimulator/wiki)
+[API Docs are in the wiki](https://github.com/circuitsim/circuit-analysis/wiki)

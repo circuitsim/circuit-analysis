@@ -8,3 +8,7 @@ temp/*
 .gitignore
 *.sublime-*
 coffeelint.json
+
+.vagrant
+Vagrantfile
+provision/*

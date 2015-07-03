@@ -1,0 +1,11 @@
+## This is just here so I don't forget how to do this...
+
+# only add to PATH if directory exists and if not already in PATH
+pathadd() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="${PATH:+"$PATH:"}$1"
+    fi
+}
+
+# example use:
+# pathadd $HOME/something
