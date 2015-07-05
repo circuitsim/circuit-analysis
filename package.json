@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Attempt at a circuit simulator.",
   "author": "Thom Wright",
-  "main": "lib/index.js",
+  "main": "lib/equation_builder.js",
   "dependencies": {
     "matrixy": "^0.0.5",
     "chai": "^3"
