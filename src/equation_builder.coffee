@@ -7,7 +7,7 @@
 {Matrixy} = require 'matrixy'
 {expect} = require 'chai'
 
-{createBlankMatrix, set} = Matrixy
+{createBlankMatrix, set, solve} = Matrixy
 
 MIN_NUM_OF_NODES = 2
 
@@ -210,3 +210,4 @@ module.exports.createEquationBuilder = ({numOfNodes, numOfVSources} ) ->
   getEquation: ->
     nodalAdmittances: nodalAdmittances
     inputs: inputs
+  solve: -> solve(nodalAdmittances, inputs)
