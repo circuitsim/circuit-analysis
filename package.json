@@ -5,7 +5,7 @@
   "author": "Thom Wright",
   "main": "lib/equation_builder.js",
   "dependencies": {
-    "matrixy": "^0.0.5",
+    "matrixy": "^1",
     "chai": "^3"
   },
   "devDependencies": {
