@@ -1,6 +1,6 @@
 {
   "name": "circuit-analysis",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Attempt at a circuit simulator.",
   "author": "Thom Wright",
   "main": "lib/equation_builder.js",
