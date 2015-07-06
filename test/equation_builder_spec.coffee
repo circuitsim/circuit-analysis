@@ -172,3 +172,14 @@ describe 'solve', ->
     solution = solve()
 
     expect(solution()).to.eql [[100]] # 100 volts
+
+  it 'should solve a simple circuit with a voltage source', ->
+    {stamp, solve} = createEquationBuilder { numOfNodes: 3, numOfVSources: 1}
+
+    stamp(1).amps.from(0).to(1);
+    stamp(0).volts.from(1).to(2);
+    stamp(100).ohms.between(2, 0);
+
+    solution = solve()
+
+    expect(solution()).to.eql [[100], [100], [1]] # 100 volts, 1 amp
