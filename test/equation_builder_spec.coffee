@@ -182,4 +182,6 @@ describe 'solve', ->
 
     solution = solve()
 
-    expect(solution()).to.eql [[100], [100], [1]] # 100 volts, 1 amp
+    expect(solution()).to.eql [[100] # volts
+                               [100] # volts
+                               [1]]  # amp
