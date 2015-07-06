@@ -95,9 +95,9 @@ describe 'Stamping:', ->
     it 'should stamp into the augmented part of the nodal admittance matrix', ->
       {stamp, getEquation} = createEquationBuilder { numOfNodes: 3, numOfVSources: 1}
       stamp(5).volts.from(1).to(2)
-      expect(getEquation().nodalAdmittances()).to.eql [[0, 0, - 1]
-                                                       [0, 0, 1]
-                                                       [ - 1, 1, 0]]
+      expect(getEquation().nodalAdmittances()).to.eql [[0, 0, 1]
+                                                       [0, 0, -1]
+                                                       [ 1, -1, 0]]
 
     it 'should not stamp more than the specified number of voltage sources', ->
       {stamp} = createEquationBuilder { numOfNodes: 3, numOfVSources: 1}
@@ -120,10 +120,10 @@ describe 'Stamping:', ->
         stamp.a.gain.of(10).multiplying.a.current.from(1).to(2)
           .controlling.a.currentSource.from(2).to(3)
 
-        expect(getEquation().nodalAdmittances()).to.eql [[ 0, 0, 0, - 1 ]
-                                                         [ 0, 0, 0, 11 ]
+        expect(getEquation().nodalAdmittances()).to.eql [[ 0, 0, 0, 1 ]
+                                                         [ 0, 0, 0, 9 ]
                                                          [ 0, 0, 0, - 10 ]
-                                                         [ - 1, 1, 0, 0 ]]
+                                                         [ 1, -1, 0, 0 ]]
 
     describe 'stamping a current controlled voltage source', ->
       it 'should stamp a CCVS', ->
@@ -132,11 +132,11 @@ describe 'Stamping:', ->
         stamp.a.gain.of(10).multiplying.a.current.from(1).to(2)
           .controlling.a.voltageSource.from(2).to(3)
 
-          expect(getEquation().nodalAdmittances()).to.eql [[ 0, 0, 0, - 1, 0 ]
-                                                           [ 0, 0, 0, 1, - 1 ]
-                                                           [ 0, 0, 0, 0, 1 ]
-                                                           [ - 1, 1, 0, 0, 0 ]
-                                                           [ 0, - 1, 1, - 10, 0 ]]
+          expect(getEquation().nodalAdmittances()).to.eql [[ 0, 0, 0, 1, 0 ]
+                                                           [ 0, 0, 0, -1, 1 ]
+                                                           [ 0, 0, 0, 0, -1 ]
+                                                           [ 1, -1, 0, 0, 0 ]
+                                                           [ 0, 1, -1, -10, 0 ]]
 
 
     describe 'stamping a voltage controlled current source', ->
@@ -158,12 +158,12 @@ describe 'Stamping:', ->
           .controlling.a.voltageSource.from(2).to(3)
 
         expect(getEquation().nodalAdmittances() ).to.eql [[ 0, 0, 0, 0 ]
-                                                          [ 0, 0, 0, - 1 ]
                                                           [ 0, 0, 0, 1 ]
-                                                          [ - 10, 9, 1, 0 ]]
+                                                          [ 0, 0, 0, -1 ]
+                                                          [ - 10, 11, -1, 0 ]]
 
 describe 'solve', ->
-  it 'should solve a simple circuit', ->
+  it 'should solve a simple circuit with no voltage sources', ->
     {stamp, solve} = createEquationBuilder { numOfNodes: 2}
 
     stamp(1).amps.from(0).to(1);

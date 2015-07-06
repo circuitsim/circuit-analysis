@@ -109,10 +109,10 @@ module.exports.createEquationBuilder = ({numOfNodes, numOfVSources} ) ->
       .to.be.lessThan numOfVSources
     vIndex = numOfNodes + numOfVoltageSourcesStamped
     numOfVoltageSourcesStamped++
-    stampNodalAdmittanceMatrix vIndex, fromNode, -1
-    stampNodalAdmittanceMatrix vIndex, toNode, 1
-    stampNodalAdmittanceMatrix fromNode, vIndex, -1
-    stampNodalAdmittanceMatrix toNode, vIndex, 1
+    stampNodalAdmittanceMatrix vIndex, fromNode, 1
+    stampNodalAdmittanceMatrix vIndex, toNode, -1
+    stampNodalAdmittanceMatrix fromNode, vIndex, 1
+    stampNodalAdmittanceMatrix toNode, vIndex, -1
     stampInputVector vIndex, voltage
     vIndex
 
