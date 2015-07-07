@@ -17,7 +17,8 @@
     "rimraf": "^2.2.8"
   },
   "scripts": {
-    "prepublish": "cake build && cake doc",
+    "prepublish": "cake build && cake doc && npm shrinkwrap",
+    "postpublish": "rm npm-shrinkwrap.json",
     "pretest": "coffeelint src/*",
     "test": "cake test"
   },
