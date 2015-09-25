@@ -5,11 +5,6 @@ Circuit Analysis
 [![David](https://img.shields.io/david/circuitsim/circuit-analysis.svg?style=flat-square)](https://david-dm.org/circuitsim/circuit-analysis)
 [![David](https://img.shields.io/david/dev/circuitsim/circuit-analysis.svg?style=flat-square)](https://david-dm.org/circuitsim/circuit-analysis#info=devDependencies)
 
-An electronic circuit simulator inspired by [Paul Falstad](http://falstad.com)'s excellent [circuit simulator](http://www.falstad.com/circuit/).
-
-### Vision
-*A visual, fully interactive circuit simulator in your browser.*
-
 ### Current Progress
 - Numerical solutions for linear, time-invariant circuits
 
@@ -17,6 +12,3 @@ An electronic circuit simulator inspired by [Paul Falstad](http://falstad.com)'s
 - Non-linear circuits
 - Transient analysis
 - AC analysis
-- Browser-based GUI
-
-[API Docs are in the wiki](https://github.com/circuitsim/circuit-analysis/wiki)

@@ -9,18 +9,21 @@
     "chai": "^3"
   },
   "devDependencies": {
-    "chai-stats": "^0.3",
-    "coffee-script": "^1.9",
-    "coffeelint": "^1.8",
-    "jsdoc": "^3",
-    "mocha": "^2",
-    "rimraf": "^2.2.8"
+    "babel": "^5.4.7",
+    "babel-eslint": "^4.0.0",
+    "chai": "^3",
+    "eslint": "^1.0.0",
+    "eslint-config-circuitsim": "^0",
+    "mocha": "^2.2.5",
+    "rimraf": "^2.3.4"
   },
   "scripts": {
-    "prepublish": "cake build && cake doc && npm shrinkwrap",
-    "postpublish": "rm npm-shrinkwrap.json",
-    "pretest": "coffeelint src/*",
-    "test": "cake test"
+    "build": "rimraf dist && babel src --out-dir dist --ignore \"__tests__\"",
+    "deploy": "./deploy.sh",
+    "lint": "eslint src/",
+    "mocha": "mocha src/**/*__tests__/* -R spec --require test-setup",
+    "test": "npm run lint && npm run mocha",
+    "prepublish": "npm run build"
   },
   "license": "MIT",
   "repository": {

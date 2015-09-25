@@ -4,11 +4,12 @@ npm-debug.log
 src/*
 test/*
 temp/*
-.travis.yml
-.gitignore
+.*
 *.sublime-*
 coffeelint.json
 
 .vagrant
 Vagrantfile
 provision/*
+
+test-setup.js
