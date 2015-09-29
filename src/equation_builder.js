@@ -53,8 +53,8 @@ export default function({numOfNodes, numOfVSources = 0}) {
             .to.be.lessThan(numOfVSources);
           const vIndex = numOfNodes + numOfVoltageSourcesStamped;
           numOfVoltageSourcesStamped++;
-          stampNodalAdmittanceMatrix(vIndex, fromNode, 1);
-          stampNodalAdmittanceMatrix(vIndex, toNode, -1);
+          stampNodalAdmittanceMatrix(vIndex, fromNode, -1);
+          stampNodalAdmittanceMatrix(vIndex, toNode, 1);
           stampNodalAdmittanceMatrix(fromNode, vIndex, 1);
           stampNodalAdmittanceMatrix(toNode, vIndex, -1);
           stampInputVector(vIndex, voltage);
@@ -83,7 +83,7 @@ export default function({numOfNodes, numOfVSources = 0}) {
           ) => {
           const vIndexControl = stampVoltageSource(0, fromControlNode, toControlNode);
           const vIndexSource = stampVoltageSource(0, fromSourceNode, toSourceNode);
-          stampNodalAdmittanceMatrix(vIndexSource, vIndexControl, -gain);
+          stampNodalAdmittanceMatrix(vIndexControl, vIndexSource, -gain);
         },
 
         stampVCCS = (
@@ -103,8 +103,8 @@ export default function({numOfNodes, numOfVSources = 0}) {
             fromSourceNode, toSourceNode
           ) => {
           const vIndexSource = stampVoltageSource(0, fromSourceNode, toSourceNode);
-          stampNodalAdmittanceMatrix(vIndexSource, fromControlNode, -gain);
-          stampNodalAdmittanceMatrix(vIndexSource, toControlNode, gain);
+          stampNodalAdmittanceMatrix(vIndexSource, fromControlNode, gain);
+          stampNodalAdmittanceMatrix(vIndexSource, toControlNode, -gain);
         };
 
   return {
