@@ -6,9 +6,9 @@ Circuit Analysis
 [![David](https://img.shields.io/david/dev/circuitsim/circuit-analysis.svg?style=flat-square)](https://david-dm.org/circuitsim/circuit-analysis#info=devDependencies)
 
 ### Current Progress
-- Numerical solutions for linear, time-invariant circuits
+- [x] Solutions for linear DC circuits
 
-### Future Ambitions
-- Non-linear circuits
-- Transient analysis
-- AC analysis
+### Future
+- [ ] Transient analysis (for capacitors, inductors etc.)
+- [ ] Non-linear circuits (for diodes, transistors etc.)
+- [ ] AC analysis
